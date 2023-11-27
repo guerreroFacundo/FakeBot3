@@ -105,7 +105,7 @@ async def on_message(message):
         responseTexto=cadena.strip()
         print("Response Obtenido: "+responseTexto)
         await message.channel.send(responseTexto)
-    ##ESTE ES EL GENERATE PARA QUE GENERE CUALQUIER COSA QUE LE MANDES
+    ##ESTE ES EL GENERATE PARA QUE GENERE CUALQUIER COSA QUE LE MANDES LUEGO DEL COMANDO
     if message.content.startswith('#generate'):
       print("Entro a el #generate")
       responseTexto = ""
