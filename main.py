@@ -38,47 +38,40 @@ class MyClient(discord.Client):
   def __init__(self, *, intents: discord.Intents):
       print("Iniciando bot...")
       super().__init__(intents=intents)
-      self.tree = app_commands.CommandTree(self)
+      self.synced = False #we use this so the bot doesn't sync commands more than once
+      
   
   # In this basic example, we just synchronize the app commands to one guild.
   # Instead of specifying a guild to every command, we copy over our global commands instead.
   # By doing so, we don't have to wait up to an hour until they are shown to the end-user.
-  async def setup_hook(self):
-      
-      print(f"Syncing commands to {len(self.guilds)} guilds...")
-      # This copies the global commands over to your guild.
-      #for guild in MY_GUILDS:
-      # print(f"Syncing commands for {guild.name} ({guild.id})")
-      await self.tree.fetch_commands()
-      await self.tree.sync()
+  async def on_ready(self):
+      await self.wait_until_ready()
+      if not self.synced: #check if slash commands have been synced 
+        await tree.sync() #guild specific: leave blank if global (global registration can take 1-24 hours)
+        self.synced = True
+      print(f"We have logged in as {self.user}.")
+            
 
 client = MyClient(intents=intents)
-
-@client.event
-async def on_ready():
-    print('Loggeado como: {0.user}'.format(client))
-    
-    for guild in client.guilds:
-      print(guild.id)
-      MY_GUILDS.append(guild.id)
+tree = app_commands.CommandTree(client)
       
 
 
-@client.tree.command()
+@tree.command()
 async def hello(interaction: discord.Interaction):
     await interaction.response.send_message(f'Hi, {interaction.user.mention}')
 
-@client.tree.command()
+@tree.command()
 async def generate(interaction: discord.Interaction,message:str):
     await interaction.response.defer(thinking=True)
     await interaction.followup.send(IA.IAimple.generate(message))
 
-@client.tree.command()
+@tree.command()
 async def generatefact(interaction: discord.Interaction,message:str):
   await interaction.response.defer(thinking=True)
   await interaction.followup.send(IA.IAimple.generateFact(message))
 
-@client.tree.command()
+@tree.command()
 async def dolar(interaction: discord.Interaction):
   await interaction.response.defer(thinking=True)
   result = dolarPrecios.findUsd.obtenerDolar()
