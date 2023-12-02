@@ -58,3 +58,22 @@ class findUsd:
     print(custom_value)
     result=result+"\n\n"+custom_value
     return result
+
+
+  def steam(arg:str):
+    result = ""
+    url = "https://www.dolarsi.com/api/dolarSiInfo.xml"
+    response = urlopen(url)
+    xml_data = response.read()
+    data_dict = xmltodict.parse(xml_data)
+    json_data = json.dumps(data_dict)
+    data = json.loads(json_data)
+    custom_value = data['cotiza']['valores_principales']['casa406']
+    custom_value = custom_value.get('nombre')+':\n'+custom_value.get('compra')+'  Compra\n'+custom_value.get('venta')+' Venta'
+    print(custom_value)
+    customValor = data['cotiza']['valores_principales']['casa406']
+    arg = arg.replace(',','.')
+    valor = str(customValor.get('venta')).replace(',','.')
+    calculado = float(valor) * float(arg)
+    print(calculado)
+    return result+"\n\n"+custom_value+"\n Valor steam: "+str(calculado)
