@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>Bienvenido a FakeBot</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #007bff;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+        }
+        h1:hover {
+            color: #0056b3;
+            animation: heartbeat 1s infinite;
+        }
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1);
+            }
+            75% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        p {
+            font-size: 18px;
+            color: #6c757d;
+        }
+        .card {
+            background-color: #e9ecef;
+            border: 2px solid #000; /* Recuadro negro */
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1 class="display-4" onclick="animateTitle()">¡Bienvenido a FakeBot!</h1>
+                <p class="lead">Aquí están los comandos de FakeBot:</p>
+            </div>
+        </div>
+
+        <div class="row">
+          {% for command_name, command_description in commands.items() %}
+              <div class="col-lg-4">
+                  <div class="card">
+                      <strong>/{{ command_name }}</strong> - {{ command_description }}
+                  </div>
+              </div>
+          {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <a id="juego-link" class="btn btn-primary" href="/game">Jugar al Juego</a>
+        </div>
+    </div>
+
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></script>
+    <script>
+        function animateTitle() {
+            // Puedes agregar cualquier lógica aquí, o dejarlo vacío si no necesitas ninguna acción al hacer clic
+        }
+        function redirectToGame() {
+            // Cambia la URL a la del juego (nombre del archivo actual)
+            window.location.href = '/index';
+        }
+    </script>
+</body>
+</html>

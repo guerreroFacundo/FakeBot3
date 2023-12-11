@@ -1,0 +1,20 @@
+opendota:
+  key_id: null
+riot:
+  key_id: RGAPI-c4cc97b7-666c-40fa-98da-9655fcd51a5e
+pubg:
+  key_id: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIwOTg3ZjMxMC1mMDZjLTAxMzYtMGM2ZS0xOWQxZThiMmYzYzAiLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNTQ2Mzk5NTU0LCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6ImRhdGEtZXhwbG9yZSJ9.1a8ywxgf3AUclR5pQKSyEFHNRPxKmY08grm8h3wsbtE
+egb:
+  key_id: null
+  key_secret: null
+riotesports:
+  key_id: null
+fortnitetracker:
+  key_id: 2480ca01-861b-44e8-aa43-044a66a944fb
+
+mongodb_creds:
+  db_user: geodesic-mongo
+  db_pass: yeZB9LtQ4U2INUAQq7NnawB9Q1P4tUpwg89EfIZZcf1LjGG7jFkJXNK8GCnTnEgP5z2FVl8vbMe7S8WwbHO8aQ==
+  db_server: geodesic-mongo.documents.azure.com:10255
+  db_name: esport-data
+  collection_name: esport-collection

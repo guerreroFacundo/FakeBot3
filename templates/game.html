@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game: Esquivar Obstáculos</title>
+  <style>
+    canvas {
+      border: 2px solid #FFF; /* Bordes blancos */
+      display: block;
+      margin: 20px auto;
+      background-color: #001; /* Fondo azul */
+    }
+
+    body {
+      color: #FFF;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      overflow: hidden; /* Ocultar barras de desplazamiento */
+      text-align: center; /* Centrar el contenido */
+    }
+
+    #gameOverMessage {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    #restartButton {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="gameCanvas" width="1000" height="600"></canvas>
+  <div id="gameOverMessage">
+    <p>¡Game Over! Tu puntuación: <span id="finalScore">0</span></p>
+    <button id="restartButton">Restart</button>
+  </div>
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const gameOverMessage = document.getElementById('gameOverMessage');
+    const restartButton = document.getElementById('restartButton');
+    const finalScoreSpan = document.getElementById('finalScore');
+
+    const gravity = 1; // Gravedad
+    let playerX = 50;
+    let playerY = canvas.height / 2;
+    let playerYSpeed = 0; // Velocidad de caída
+    let obstacleX = canvas.width;
+    let obstacleY = 0;
+    let obstacleSpeed = 5;
+    let score = 0;
+    let jumpHeight = 15; // Altura del salto
+    let isJumping = false;
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Dibujar jugador
+      ctx.fillStyle = '#00F';
+      ctx.fillRect(playerX, playerY, 20, 20);
+
+      // Dibujar obstáculo (forma de misil)
+      ctx.fillStyle = '#F00';
+      ctx.fillRect(obstacleX, obstacleY, 20, 10);
+
+      // Dibujar puntuación
+      ctx.fillStyle = '#FFF';
+      ctx.font = '20px Arial';
+      ctx.fillText(`Score: ${score}`, 10, 30);
+    }
+
+    function update() {
+      // Actualizar jugador
+      if (playerY < canvas.height - 20 || playerYSpeed < 0) {
+        playerY += playerYSpeed;
+        playerYSpeed += gravity;
+      } else {
+        // El jugador ha tocado el suelo, el juego termina
+        showGameOver();
+      }
+
+      // Actualizar obstáculo
+      obstacleX -= obstacleSpeed;
+
+      // Colisión con el obstáculo
+      if (
+        playerX < obstacleX + 20 &&
+        playerX + 20 > obstacleX &&
+        playerY < obstacleY + 10 && // Colisión con el misil (altura de 10 píxeles)
+        playerY + 20 > obstacleY
+      ) {
+        showGameOver();
+      }
+
+      // Pasar el obstáculo
+      if (obstacleX < 0) {
+        obstacleX = canvas.width;
+        obstacleY = Math.floor(Math.random() * (canvas.height - 10)); // Ajuste de altura a 10 píxeles
+        score++;
+      }
+    }
+
+    function gameLoop() {
+      draw();
+      update();
+      requestAnimationFrame(gameLoop);
+    }
+
+    function resetGame() {
+      playerY = canvas.height / 2;
+      playerYSpeed = 0;
+      obstacleX = canvas.width;
+      obstacleY = 0;
+      score = 0;
+      hideGameOver();
+    }
+
+    function showGameOver() {
+      gameOverMessage.style.display = 'block';
+      finalScoreSpan.textContent = score;
+    }
+
+    function hideGameOver() {
+      gameOverMessage.style.display = 'none';
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.code === 'Space' && !isJumping) {
+        playerYSpeed = -jumpHeight;
+        isJumping = true;
+      }
+    });
+
+    document.addEventListener('keyup', (event) => {
+      if (event.code === 'Space') {
+        isJumping = false;
+      }
+    });
+
+    restartButton.addEventListener('click', resetGame);
+
+    // Esperar 1 segundo antes de comenzar el juego
+    setTimeout(() => {
+      resetGame();
+      gameLoop();
+    }, 1000);
+  </script>
+</body>
+
+</html>
