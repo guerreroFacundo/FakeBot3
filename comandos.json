@@ -1,9 +1,4 @@
 {
-    "say": "El bot dice lo que quieras",
-    "generate": "El bot va a generar lo que le pidas por texto",
-    "generate_image": "El bot va a generar lo que le pidas con replicate",
-    "generate_image_op": "El bot va a generar lo que le pidas con Dalle",
-    "generate_fact": "El bot va a generar un dato divertido de lo ingresado",
     "dolar": "El bot te dice el precio del dolar en tiempo real",
     "steam": "El bot te transforma el dolar ingresado a pesos",
     "join": "El bot te une al canal de voz en el que te encuentras",

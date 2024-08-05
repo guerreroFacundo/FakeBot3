@@ -61,40 +61,40 @@ class comandosguardados:
 
 
 #----------------------------------------------INICIO Comandos "/" ---------------------------------------------------
-@tree.command(name="say", description="El bot dice lo que quieras")
-async def say(interaction: discord.Interaction, msg: str):
-  await interaction.response.send_message(msg, tts=True, ephemeral=True)
+# @tree.command(name="say", description="El bot dice lo que quieras")
+# async def say(interaction: discord.Interaction, msg: str):
+#   await interaction.response.send_message(msg, tts=True, ephemeral=True)
 
 
-@tree.command(name="generate",
-              description="El bot va a generar lo que le pidas por texto")
-async def generate(interaction: discord.Interaction, message: str):
-  await interaction.response.defer(thinking=True)
-  sinlaletrafea = message.replace("ñ", "U+00F1")
-  await interaction.followup.send(embed=IA.IAimple.generate(sinlaletrafea))
+# @tree.command(name="generate",
+#               description="El bot va a generar lo que le pidas por texto")
+# async def generate(interaction: discord.Interaction, message: str):
+#   await interaction.response.defer(thinking=True)
+#   sinlaletrafea = message.replace("ñ", "U+00F1")
+#   await interaction.followup.send(embed=IA.IAimple.generate(sinlaletrafea))
 
 
-@tree.command(name="generate_image",
-              description="El bot va a generar lo que le pidas con replicate")
-async def generate_image(interaction: discord.Interaction, message: str):
-  await interaction.response.defer(thinking=True)
-  await interaction.followup.send(embed=IA.IAimple.generateImage(message))
+# @tree.command(name="generate_image",
+#               description="El bot va a generar lo que le pidas con replicate")
+# async def generate_image(interaction: discord.Interaction, message: str):
+#   await interaction.response.defer(thinking=True)
+#   await interaction.followup.send(embed=IA.IAimple.generateImage(message))
 
 
-@tree.command(name="generate_image_op",
-              description="El bot va a generar lo que le pidas con Dalle")
-async def generate_image_openai(interaction: discord.Interaction,
-                                message: str):
-  await interaction.response.defer(thinking=True)
-  await interaction.followup.send(embed=IA.IAimple.generateImageOpenai(message))
+# @tree.command(name="generate_image_op",
+#               description="El bot va a generar lo que le pidas con Dalle")
+# async def generate_image_openai(interaction: discord.Interaction,
+#                                 message: str):
+#   await interaction.response.defer(thinking=True)
+#   await interaction.followup.send(embed=IA.IAimple.generateImageOpenai(message))
 
 
-@tree.command(
-    name="generate_fact",
-    description="El bot va a generar un dato divertido de lo ingresado")
-async def generatefact(interaction: discord.Interaction, message: str):
-  await interaction.response.defer(thinking=True)
-  await interaction.followup.send(embed=IA.IAimple.generateFact(message))
+# @tree.command(
+#     name="generate_fact",
+#     description="El bot va a generar un dato divertido de lo ingresado")
+# async def generatefact(interaction: discord.Interaction, message: str):
+#   await interaction.response.defer(thinking=True)
+#   await interaction.followup.send(embed=IA.IAimple.generateFact(message))
 
 @tree.command(name="dolar",
   description="El bot te dice el precio del dolar en tiempo real")
@@ -227,30 +227,6 @@ async def stop(interaction: discord.Interaction):
 #     await channel_to_upload_to.send(content = "Tomen agua UwU", allowed_mentions = allowed_mentions)
 
 #----------------------------------------------FIN Comandos "/" -----------------------------------------------------
-
-
-##EVENTOS CON EL PREFIX EN #
-@client.event
-async def on_message(message):
-  if message.author == client.user:
-    return
-
-  ##ESTO TE DEVUELVE LOS VALORES DE LOS DOLARES
-  if message.content.startswith('#dolar'):
-    result = dolarPrecios.findUsd.obtenerDolar()
-    await message.channel.send(result)
-
-  ##ESTE ES EL GENERATE FUN FACT PARA QUE TE GENERE UN DATO SOBRE LO QUE LE MANDES
-  if message.content.startswith('#generateFact'):
-    strmsj = str(message.content[13:])
-    responseTexto = IA.IAimple.generateFact(strmsj)
-    await message.channel.send(responseTexto)
-
-  ##ESTE ES EL GENERATE PARA QUE GENERE CUALQUIER COSA QUE LE MANDES LUEGO DEL COMANDO
-  if message.content.startswith('#generate'):
-    strmsj = str(message.content[9:])
-    responseTexto = IA.IAimple.generate(strmsj)
-    await message.channel.send(responseTexto)
 
 
 #----------------------------------------------Keep alive y run-----------------------------------------------
