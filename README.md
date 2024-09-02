@@ -25,7 +25,7 @@ El bot tiene como objetivo disponer de comandos que sean utiles en el dia a dia.
     ```bash
     pip install -r requirements.txt
     ```
-
+Acordarse de crear un .env con los valores correspondientes
 3. Configurar PM2 para ejecutar el bot:
     ```bash
     pm2 start bot.py --name "mi-bot"
