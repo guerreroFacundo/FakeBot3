@@ -1,11 +1,13 @@
 {
+    "help": "Muestra todos los comandos que tiene el bot disponible",
+    "say": "El bot dice lo que quieras",
     "dolar": "El bot te dice el precio del dolar en tiempo real",
     "steam": "El bot te transforma el dolar ingresado a pesos",
-    "join": "El bot te une al canal de voz en el que te encuentras",
-    "leave": "El bot se desconecta del canal de voz",
-    "play": "El bot reproducira lo que le pidas",
+    "clima": "El bot te dice el clima",
+    "climafuturo": "El bot te dice el clima dentro de los pr\u00f3ximos 14 d\u00edas",
+    "chatgpt": "Mensajes a chatGPT",
+    "gemini": "Mensajes a gemini",
     "r6_stats": "El bot te dice las estadisticas de tu perfil de Rainbow 6",
     "steam_profile": "El bot te dice la informacion de tu perfil de steam",
-    "bonk": "Hace que golpees a alguien :v",
-    "stop": "El bot detiene la reproduccion de musica"
+    "bonk": "Hace que golpees a alguien :v"
 }

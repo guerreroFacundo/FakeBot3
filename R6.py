@@ -1,4 +1,6 @@
 import asyncio
+
+from dotenv import load_dotenv
 from siegeapi import Auth
 from siegeapi import player
 import os
@@ -7,6 +9,7 @@ import discord
 
 
 class rainbow:
+  load_dotenv()
   async def get_stats(player_name:str):
     auth =  Auth(os.getenv('EMAILUBI'), os.getenv('CONTRAUBI'))
     playerOp = await auth.get_player(name=player_name)

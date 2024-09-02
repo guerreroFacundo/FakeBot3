@@ -58,6 +58,7 @@ class music:
         print("Es una cancion sola")
         try:
             voice_client = await msg.user.voice.channel.connect()
+            print(f"Guild ID: {voice_client.guild.id}")
             voice_clients[voice_client.guild.id] = voice_client
         except Exception as err:
             print("error al obtener voice_clientes: ",err)
@@ -141,4 +142,3 @@ class urlextract:
     print("URL dentro del array antes de pasarlo: ",urlsarmadas)
     return urlsarmadas
 
-  

@@ -7,35 +7,11 @@ import discord
 
 
 class imagenes:
-  async def armarImagenBonk(interaction: discord.Interaction,member: discord.Member):
-    print("Armando imagen bonk")
-
-    
-    my_image = Image.open("bonk.jpg")
-    asset = interaction.user.display_avatar
-    data = BytesIO(await asset.read())
-    pfp = Image.open(data)
-    pfp = pfp.resize((125, 125))
-    my_image.paste(pfp, (87,32))
-    my_image.save("profile.png")
-    avatarUsuario2 = member.display_avatar #aca lo relleno con el posta
-    data2 = BytesIO(await avatarUsuario2.read())
-    pfp2 = Image.open(data2)
-    pfp2 = pfp2.resize((70, 70)) #CORDENADAS PARA EL QUE TIRA EL COMANDO
-    my_image = Image.open("profile.png")
-    my_image.paste(pfp2, (350,80)) #CORDENADAS PARA EL QUE ARROBES -----my_image.paste(pfp2, (350,80))
-    my_image.save("profile2.png")
-
-
-
-    
-    print("Termino de armar imagen bonk")
-
   async def armarImagenBonk2(interaction: discord.Interaction,member: discord.Member):
     print("Armando imagen bonk 2")
     
     # Abrir la imagen bonkBien.jpg
-    my_image = Image.open("imagenes/bonkBien.jpg")
+    my_image = Image.open("F:/Archivos/Documentos/Proyectos - BPM - Intelijei - etc/FakeBot3/imagenes/bonkBien.jpg")
 
     # Obtener la imagen del avatar de interaction.user
     asset = interaction.user.display_avatar
@@ -45,10 +21,10 @@ class imagenes:
     my_image.paste(pfp, (450, 90))
 
     # Guardar la imagen temporal
-    my_image.save("imagenes/temp_profile.png")
+    my_image.save("F:/Archivos/Documentos/Proyectos - BPM - Intelijei - etc/FakeBot3/imagenes/temp_profile.png")
 
     # Abrir la imagen perritobonkeado.jpg
-    image_perrito = Image.open("imagenes/perritobonkeado.jpg")
+    image_perrito = Image.open("F:/Archivos/Documentos/Proyectos - BPM - Intelijei - etc/FakeBot3/imagenes/perritobonkeado.jpg")
 
     # Obtener la imagen del avatar de member
     avatar_usuario = member.display_avatar
@@ -58,11 +34,11 @@ class imagenes:
     image_perrito.paste(pfp_avatar_usuario, (90, 150))
 
     # Guardar la imagen final
-    image_perrito.save("imagenes/perfil_final.png")
+    image_perrito.save("F:/Archivos/Documentos/Proyectos - BPM - Intelijei - etc/FakeBot3/imagenes/perfil_final.png")
 
     # Abrir las imágenes temporales y finales
-    image_temp_profile = Image.open("imagenes/temp_profile.png")
-    image_perfil_final = Image.open("imagenes/perfil_final.png")
+    image_temp_profile = Image.open("F:/Archivos/Documentos/Proyectos - BPM - Intelijei - etc/FakeBot3/imagenes/temp_profile.png")
+    image_perfil_final = Image.open("F:/Archivos/Documentos/Proyectos - BPM - Intelijei - etc/FakeBot3/imagenes/perfil_final.png")
 
     # Redimensionar las imágenes para asegurar que ambas se vean completamente
     image_temp_profile = image_temp_profile.resize((500, 500))
@@ -80,6 +56,6 @@ class imagenes:
     
     
     # Guardar la imagen final combinada
-    image_combinada.save("imagenes/perfil_completo.png")
+    image_combinada.save("F:/Archivos/Documentos/Proyectos - BPM - Intelijei - etc/FakeBot3/imagenes/perfil_completo.png")
     
     print("Termino de armar imagen bonk 2")
