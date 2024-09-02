@@ -25,13 +25,14 @@ El bot tiene como objetivo disponer de comandos que sean utiles en el dia a dia.
     ```bash
     pip install -r requirements.txt
     ```
-Acordarse de crear un .env con los valores correspondientes
-3. Configurar PM2 para ejecutar el bot:
+3. Acordarse de crear un .env con los valores correspondientes
+
+4. Configurar PM2 para ejecutar el bot:
     ```bash
     pm2 start bot.py --name "mi-bot"
     ```
 
-4. Verificar que el bot esté corriendo:
+5. Verificar que el bot esté corriendo:
     ```bash
     pm2 status
     ```
