@@ -37,10 +37,39 @@ El bot tiene como objetivo disponer de comandos que sean utiles en el dia a dia.
     pm2 status
     ```
 
-### Despliegue
+### Despliegue Local como servicio con pm2
 
-El bot se despliega y se mantiene en ejecución localmente utilizando PM2. Esto asegura que el bot esté siempre activo y reinicie automáticamente en caso de errores o reinicios del sistema.
+Comandos utilizados:
+1. Instalar variables de entorno
+   CREAR LA VARIABLE DE ENTORNO o Environment Variables
+   ```bash
+   pm2_home=c:\.pm2
+   ```
+2. Instalar y Desinstalar PM2
+   ```bash
+   npm install pm2 -g
+   npm uni pm2 -g
+   ```
+3. Cargar app
+   ```bash
+   pm2 start D:/0backend/backend/build/index.js --name "DiscordBot"
+   pm2 save
+   pm2 start all
+   ```
+### Poner como servicio
+```bash
+npm install pm2-windows-service -g
+pm2-service-install -n DiscordBot
+```
+**No configurar la linea siguiente por defecto**
 
+--->PM2_SERVICE_SCRIPTS? No
+
+### Desinstalar servicios
+```bash
+pm2-service-uninstall
+npm uni pm2 -g
+```
 ## Contribuciones
 
 Este proyecto es principalmente para fines de aprendizaje, pero las contribuciones son bienvenidas. Si deseas mejorar el bot o agregar nuevas funcionalidades, siéntete libre de hacer un fork y enviar un pull request.
